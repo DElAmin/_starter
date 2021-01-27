@@ -13,4 +13,4 @@ const PORT = 3000 || process.env.PORT;
 //app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 //Set up a server to handle socket
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
