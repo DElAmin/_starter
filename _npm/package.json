@@ -1,0 +1,19 @@
+{
+  "name": "_npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

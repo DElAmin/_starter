@@ -1,0 +1,10 @@
+%btn {
+    display: inline-block;
+    &:hover {
+        transform: scale(.98);
+    }
+}
+
+.btn-primary {
+    @extend %btn;
+}
