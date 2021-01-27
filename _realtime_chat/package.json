@@ -4,7 +4,8 @@
   "description": "\u001b[A\u001b[BRealtime chat app with rooms",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "ElAmin Douani",
   "license": "MIT",
