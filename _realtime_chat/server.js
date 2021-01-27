@@ -12,7 +12,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Set when client connects
 io.on('connection', socket => {
-    console.log('new WS Connection...');
+    //console.log('new WS Connection...');
+
+    //Emit event to the client, Welcome current user
+    socket.emit('message', 'Welcome to ChatCord!');
+
+    //Broadcast when a user connects
+    socket.broadcast.emit('message', 'A user has joinedthe chat');
+
+    //Runs when client disconnects
+    socket.on('disconnect', ()=> {
+        io.emit('message', 'A user has left the chat');
+    });
+
+    //io.emit();
 })
 
 const PORT = 3000 || process.env.PORT;
