@@ -5,7 +5,7 @@ const socketio =require('socket.io');
 const formatMessage = require('./utils/messages');
 const {
     userJoin, 
-    getCurrentUser,
+    getCurrentUsers,
     userLeave,
     getRoomUsers
 } = require('./utils/users');
@@ -41,6 +41,11 @@ io.on('connection', socket => {
                 formatMessage(botName, `${user.username} has joined the chat`)
             );
 
+        //Send users and room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getCurrentUsers(user.room)
+        });        
     });
     
     //io.emit();
@@ -48,7 +53,7 @@ io.on('connection', socket => {
     //Listen for chatMessage
     socket.on('chatMessage', (msg) => {
         console.log(msg);
-        const user = getCurrentUser(socket.id);
+        const user = getCurrentUsers(socket.id);
 
         //io.emit('message', msg);
         //io.emit('message', formatMessage('USER', msg) );
@@ -62,6 +67,12 @@ io.on('connection', socket => {
         if (user) {
             //io.emit('message', 'A user has left the chat');
             io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`));
+       
+            //Send users and room info
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users: getCurrentUsers(user.room)
+            });  
         }
 
     });

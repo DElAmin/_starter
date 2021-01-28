@@ -10,7 +10,7 @@ function userJoin(id, username, room) {
 }
 
 //Get current user
-function getCurrentUser(id) {
+function getCurrentUsers(id) {
     return users.find(user => user.id === id);
 }
 
@@ -30,7 +30,7 @@ function getRoomUsers(room) {
 
 module.exports = {
     userJoin, 
-    getCurrentUser,
+    getCurrentUsers,
     userLeave,
     getRoomUsers
 };
